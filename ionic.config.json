@@ -1,5 +1,7 @@
 {
   "name": "xor",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

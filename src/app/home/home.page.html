@@ -7,8 +7,66 @@
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+
+
+  <div class="track-info">
+    <div class="cover" style.background-image="url('{{track.cover}}')"></div>
+    <div class="details">
+      <h4 [class.subtitle]="collapsed">{{ track.name }}</h4>
+      <span>{{ track.artist }}</span>
+    </div>
   </div>
+
+  <div class="progress-wrap">
+    <input dir="ltr" type="range" class="progress" [value]="getProgress()" min="0" max="100" step="0.01"
+           (input)="setProgress(duration.value)" #duration>
+    <div class="progress-foreground" [style.width.%]="getProgress()"></div>
+  </div>
+
+  <div class="timing">
+    <small class="current">{{ player.currentTime }}</small>
+    <small class="remaining">- {{ player.duration - player.currentTime }}</small>
+  </div>
+
+  <div class="controls">
+    <button class="control-button"  ghost size="tiny" (click)="toggleShuffle()" [class.on]="shuffle">
+      <!-- <nb-icon icon="shuffle-2-outline" pack="eva"></nb-icon> -->
+      shuffle
+    </button>
+    <button class="control-button"  ghost size="medium" (click)="prev()">
+      <!-- <nb-icon class="skip" icon="skip-back-outline" pack="eva"></nb-icon> -->
+      prev
+    </button>
+    <button class="control-button play-button"  ghost size="medium" (click)="playPause()">
+      <!-- <nb-icon class="play" [icon]="player.paused ? 'play-circle-outline' : 'pause-circle-outline'" pack="eva">
+      </nb-icon> -->
+      play
+    </button>
+    <button class="control-button skip-forward-button"  ghost size="medium" (click)="next()">
+      <!-- <nb-icon class="skip" icon="skip-forward-outline" pack="eva"></nb-icon> -->
+      next
+    </button>
+    <button class="control-button"  ghost size="tiny" (click)="toggleLoop()" [class.on]="player.loop">
+      <!-- <nb-icon icon="repeat-outline" pack="eva"></nb-icon> -->
+      loop
+    </button>
+  </div>
+
+
+  <div class="volume">
+    <button  ghost size="small" (click)="setVolume(0)">
+      <!-- <nb-icon class="volume-icon" icon="volume-down-outline" pack="eva"></nb-icon> -->
+      volume
+    </button>
+    <div class="progress-wrap">
+      <input type="range" class="progress" [value]="getVolume()" max="100"
+             (input)="setVolume(volume.value)" #volume>
+      <div class="progress-foreground" [style.width.%]="getVolume()"></div>
+    </div>
+    <button  ghost size="small" (click)="setVolume(100)">
+      <!-- <nb-icon class="volume-icon" icon="volume-up-outline" pack="eva"></nb-icon> -->
+    </button>
+  </div>
+
+
 </ion-content>
