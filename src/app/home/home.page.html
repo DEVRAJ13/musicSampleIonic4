@@ -1,15 +1,107 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Home
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div style="    background-image: url(https://pbs.twimg.com/profile_images/686983344274280456/CKUGjcnG_400x400.png);
+            height: 150px;
+            width: 150px;
+            border-radius: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            text-align: center;
+            display: block;
+            margin: auto;
+            margin-top: 25px;">
+          <ion-row>
+            <ion-col>
+              <ion-icon style="    width: 40px;
+              height: 40px;
+              margin-top: 49px;
+              color: #d60025;
+              background: #272727;
+              border-radius: 100px;" name="disc"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-  <div class="track-info">
+
+  <ion-grid>
+      <ion-row>
+          <ion-col size="3">
+            <ion-button (click)="toggleShuffle()" color="light" fill="clear" shape="round">
+              <ion-icon name="shuffle"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col class="ion-text-center" size="6">
+            <h6 style="font-weight: bold;
+            color: white;">Don't Blame Me</h6>
+            <p style="font-size: 14px;
+            color: #fff;">Taylar Swift</p>
+          </ion-col>
+          <ion-col size="3">
+            <ion-button (click)="toggleLoop()" color="light" fill="clear" shape="round">
+              <ion-icon name="infinite"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+  </ion-grid>
+
+  <ion-range min="1000" max="2000" step="100" snaps="true" ticks="false" color="danger"></ion-range>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" class="ion-float-left">
+
+      </ion-col>
+      <ion-col size="4">
+
+      </ion-col>
+      <ion-col size="4" class="ion-float-right">
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+  <button class="control-button"  ghost size="medium" (click)="prev()">
+    prev
+  </button>
+  <button class="control-button play-button"  ghost size="medium" (click)="playPause()">
+    play
+  </button>
+  <button class="control-button skip-forward-button"  ghost size="medium" (click)="next()">
+    next
+  </button>
+
+
+  <div class="volume">
+    <button  ghost size="small" (click)="setVolume(0)">
+      volume
+    </button>
+    <div class="progress-wrap">
+      <input type="range" class="progress" [value]="getVolume()" max="100"
+             (input)="setVolume(volume.value)" #volume>
+      <div class="progress-foreground" [style.width.%]="getVolume()"></div>
+    </div>
+    <button  ghost size="small" (click)="setVolume(100)">
+    </button>
+  </div>
+
+  <!-- <div class="track-info">
     <div class="cover" style.background-image="url('{{track.cover}}')"></div>
     <div class="details">
       <h4 [class.subtitle]="collapsed">{{ track.name }}</h4>
@@ -30,24 +122,18 @@
 
   <div class="controls">
     <button class="control-button"  ghost size="tiny" (click)="toggleShuffle()" [class.on]="shuffle">
-      <!-- <nb-icon icon="shuffle-2-outline" pack="eva"></nb-icon> -->
       shuffle
     </button>
     <button class="control-button"  ghost size="medium" (click)="prev()">
-      <!-- <nb-icon class="skip" icon="skip-back-outline" pack="eva"></nb-icon> -->
       prev
     </button>
     <button class="control-button play-button"  ghost size="medium" (click)="playPause()">
-      <!-- <nb-icon class="play" [icon]="player.paused ? 'play-circle-outline' : 'pause-circle-outline'" pack="eva">
-      </nb-icon> -->
       play
     </button>
     <button class="control-button skip-forward-button"  ghost size="medium" (click)="next()">
-      <!-- <nb-icon class="skip" icon="skip-forward-outline" pack="eva"></nb-icon> -->
       next
     </button>
     <button class="control-button"  ghost size="tiny" (click)="toggleLoop()" [class.on]="player.loop">
-      <!-- <nb-icon icon="repeat-outline" pack="eva"></nb-icon> -->
       loop
     </button>
   </div>
@@ -55,7 +141,6 @@
 
   <div class="volume">
     <button  ghost size="small" (click)="setVolume(0)">
-      <!-- <nb-icon class="volume-icon" icon="volume-down-outline" pack="eva"></nb-icon> -->
       volume
     </button>
     <div class="progress-wrap">
@@ -64,9 +149,8 @@
       <div class="progress-foreground" [style.width.%]="getVolume()"></div>
     </div>
     <button  ghost size="small" (click)="setVolume(100)">
-      <!-- <nb-icon class="volume-icon" icon="volume-up-outline" pack="eva"></nb-icon> -->
     </button>
-  </div>
+  </div> -->
 
 
 </ion-content>

@@ -36,7 +36,6 @@ export class HomePage {
         this.track = this.playerService.prev();
       }
     }
-
     this.reload();
   }
 
