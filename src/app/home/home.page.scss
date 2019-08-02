@@ -3,6 +3,14 @@ ion-content{
 
   --ion-background-color:#272727;
 }
+
+.toolbar-title {
+  color: #FFFFFF !important;
+}
+
+.toolbar-background {
+  --ion-background-color:#272727 !important;
+}
   // .track-info {
   //   display: flex;
   //   align-items: center;
@@ -153,16 +161,16 @@ ion-content{
   //       flex: none;
   //     }
 
-  //     .details {
-  //       margin-left: 0.875rem;
-  //       text-align: left;
-  //       padding: 0;
+      // .details {
+      //   margin-left: 0.875rem;
+      //   text-align: left;
+      //   padding: 0;
 
-  //       h4 {
-  //         margin-bottom: 0.125rem;
-  //       }
-  //     }
-  //   }
+      //   h4 {
+      //     margin-bottom: 0.125rem;
+      //   }
+      // }
+    
 
   //   .progress-wrap {
   //     width: calc(100% - 6rem);

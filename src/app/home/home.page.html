@@ -7,11 +7,11 @@
 </ion-header>
 
 <ion-content>
-
+{{track.cover}}
   <ion-grid>
     <ion-row>
       <ion-col>
-        <div style="    background-image: url(https://pbs.twimg.com/profile_images/686983344274280456/CKUGjcnG_400x400.png);
+        <div [ngStyle]="{'background-image': 'url(' + track.cover + ')'}" style="
             height: 150px;
             width: 150px;
             border-radius: 100%;
@@ -24,7 +24,7 @@
             margin-top: 25px;">
           <ion-row>
             <ion-col>
-              <ion-icon style="    width: 40px;
+              <ion-icon style="width: 40px;
               height: 40px;
               margin-top: 49px;
               color: #d60025;
@@ -47,9 +47,9 @@
           </ion-col>
           <ion-col class="ion-text-center" size="6">
             <h6 style="font-weight: bold;
-            color: white;">Don't Blame Me</h6>
+            color: white;">{{ track.name }}</h6>
             <p style="font-size: 14px;
-            color: #fff;">Taylar Swift</p>
+            color: #fff;">{{ track.artist }}</p>
           </ion-col>
           <ion-col size="3">
             <ion-button (click)="toggleLoop()" color="light" fill="clear" shape="round">
