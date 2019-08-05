@@ -1,17 +1,17 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="dark">
     <ion-title>
-      Home
+      BIT
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  {{track.cover}}
+
   <ion-grid>
     <ion-row>
       <ion-col>
-        <div [ngStyle]="{'background-image': 'url(' + track.cover + ')'}" style="
+        <div class="rotate" [ngStyle]="{'background-image': 'url(' + track.cover + ')'}" style="
             height: 150px;
             width: 150px;
             border-radius: 100%;
@@ -27,7 +27,7 @@
               <ion-icon style="width: 40px;
               height: 40px;
               margin-top: 49px;
-              color: #d60025;
+              color: #ff002d;
               background: #272727;
               border-radius: 100px;" name="disc"></ion-icon>
             </ion-col>
@@ -39,123 +39,61 @@
 
 
   <ion-grid>
-    <ion-row>
-      <ion-col size="3">
+    <ion-row  style="    margin-top: 16px;">
+      <ion-col size="3" style="text-align: center;">
         <ion-button (click)="toggleShuffle()" color="light" fill="clear" shape="round">
-          <ion-icon name="shuffle"></ion-icon>
+          <ion-icon style=" color: #ff002d;" name="shuffle" ></ion-icon>
         </ion-button>
       </ion-col>
       <ion-col class="ion-text-center" size="6">
-        <h6 style="font-weight: bold;
-            color: white;">{{ track.name }}</h6>
-        <p style="font-size: 14px;
-            color: #fff;">{{ track.artist }}</p>
+            <h4 style="color: white;">{{ track.name }}</h4>
+            <span  style="    color: #b9b9b9;
+            font-weight: lighter;
+        ">{{ track.artist }}</span>
       </ion-col>
-      <ion-col size="3">
+      <ion-col size="3" style="text-align: center;">
         <ion-button (click)="toggleLoop()" color="light" fill="clear" shape="round">
-          <ion-icon name="infinite"></ion-icon>
+          <ion-icon style=" color: #ff002d;" name="infinite"></ion-icon>
         </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  <ion-range min="1000" max="2000" step="100" snaps="true" ticks="false" color="danger"></ion-range>
+<ion-row  style="    margin-top: 16px;">
+  <ion-col size="2" style="text-align: center;">
+    <small class="current" style="color: white;">{{ player.currentTime | timing }}</small>
+  </ion-col>
+  <ion-col size="8">
+      <div class="progress-wrap">
+          <input dir="ltr" type="range" class="progress" [value]="getProgress()" min="0" max="100" step="0.01"
+                 (input)="setProgress(duration.value)" #duration>
+          <div class="progress-foreground" [style.width.%]="getProgress()"></div>
+        </div>
+  </ion-col>
+  <ion-col size="2" style="text-align: center;">
+    <small class="remaining" style="color: white;"> {{ player.duration - player.currentTime | timing }}</small>
+  </ion-col>
+</ion-row>
 
   <ion-grid>
-    <ion-row>
-      <ion-col size="4" class="ion-float-left">
+    <ion-row  style="    margin-top: 16px;">
+      <ion-col size="4" style="text-align: center;">
         <ion-button color="light" fill="clear" shape="round" (click)="prev()">
           <ion-icon name="skip-backward"></ion-icon>
         </ion-button>
       </ion-col>
-      <ion-col size="4">
+      <ion-col size="4" style="text-align: center;">
         <ion-button color="light" fill="clear" shape="round" (click)="playPause()">
-          <ion-icon name="play"></ion-icon>
+          <ion-icon [name]="player.paused ? 'play' : 'pause'"></ion-icon>
         </ion-button>
       </ion-col>
-      <ion-col size="4" class="ion-float-right">
+      <ion-col size="4" style="text-align: center;">
         <ion-button color="light" fill="clear" shape="round" (click)="next()">
           <ion-icon name="skip-forward"></ion-icon>
         </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
-
-
-
-  <button class="control-button" ghost size="medium" (click)="prev()">
-    prev
-  </button>
-  <button class="control-button play-button" ghost size="medium" (click)="playPause()">
-    play
-  </button>
-  <button class="control-button skip-forward-button" ghost size="medium" (click)="next()">
-    next
-  </button>
-
-
-  <div class="volume">
-    <button ghost size="small" (click)="setVolume(0)">
-      volume
-    </button>
-    <div class="progress-wrap">
-      <input type="range" class="progress" [value]="getVolume()" max="100" (input)="setVolume(volume.value)" #volume>
-      <div class="progress-foreground" [style.width.%]="getVolume()"></div>
-    </div>
-    <button ghost size="small" (click)="setVolume(100)">
-    </button>
-  </div>
-
-  <!-- <div class="track-info">
-    <div class="cover" style.background-image="url('{{track.cover}}')"></div>
-    <div class="details">
-      <h4 [class.subtitle]="collapsed">{{ track.name }}</h4>
-      <span>{{ track.artist }}</span>
-    </div>
-  </div>
-
-  <div class="progress-wrap">
-    <input dir="ltr" type="range" class="progress" [value]="getProgress()" min="0" max="100" step="0.01"
-           (input)="setProgress(duration.value)" #duration>
-    <div class="progress-foreground" [style.width.%]="getProgress()"></div>
-  </div>
-
-  <div class="timing">
-    <small class="current">{{ player.currentTime }}</small>
-    <small class="remaining">- {{ player.duration - player.currentTime }}</small>
-  </div>
-
-  <div class="controls">
-    <button class="control-button"  ghost size="tiny" (click)="toggleShuffle()" [class.on]="shuffle">
-      shuffle
-    </button>
-    <button class="control-button"  ghost size="medium" (click)="prev()">
-      prev
-    </button>
-    <button class="control-button play-button"  ghost size="medium" (click)="playPause()">
-      play
-    </button>
-    <button class="control-button skip-forward-button"  ghost size="medium" (click)="next()">
-      next
-    </button>
-    <button class="control-button"  ghost size="tiny" (click)="toggleLoop()" [class.on]="player.loop">
-      loop
-    </button>
-  </div>
-
-
-  <div class="volume">
-    <button  ghost size="small" (click)="setVolume(0)">
-      volume
-    </button>
-    <div class="progress-wrap">
-      <input type="range" class="progress" [value]="getVolume()" max="100"
-             (input)="setVolume(volume.value)" #volume>
-      <div class="progress-foreground" [style.width.%]="getVolume()"></div>
-    </div>
-    <button  ghost size="small" (click)="setVolume(100)">
-    </button>
-  </div> -->
 
 
 </ion-content>

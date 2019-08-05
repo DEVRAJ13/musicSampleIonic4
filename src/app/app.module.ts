@@ -10,12 +10,13 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { Network } from '@ionic-native/network/ngx';
-import { TimingPipe } from './timing.pipe';
+
 
 @NgModule({
-  declarations: [AppComponent, TimingPipe],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  exports: [],
   providers: [
     StatusBar,
     SplashScreen,

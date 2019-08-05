@@ -14,16 +14,16 @@ export class PlayerService {
   current: number;
   playlist: Track[] = [
     {
-      name: 'Don\'t Wanna Fight',
-      artist: 'Alabama Shakes',
-      url: 'https://docs.google.com/uc?export=download&id=1z8Uy9GyM75TADY6fnqUMLzfP-S8w5hzj',
-      cover: 'https://c.saavncdn.com/540/Listen-Again-English-2015-500x500.jpg',
+      name: 'Sixteen',
+      artist: 'Ellie Goulding',
+      url: 'https://docs.google.com/uc?export=download&id=107-QHev-hsPV2m_onoLFIzVIobjaPzDD',
+      cover: 'https://www.tunelyrico.com/wp-content/uploads/2019/04/sixteen-ellie-goulding-lyrics.jpg',
     },
     {
-      name: 'Harder',
-      artist: 'Daft Punk',
-      url: 'https://p.scdn.co/mp3-preview/92a04c7c0e96bf93a1b1b1cae7dfff1921969a7b',
-      cover: 'https://c.saavncdn.com/540/Listen-Again-English-2015-500x500.jpg',
+      name: 'Ban',
+      artist: 'Sunanda Sharma',
+      url: 'https://docs.google.com/uc?export=download&id=1eomgpXv3myHo86ysjW5lLHvRmSVienkp',
+      cover: 'https://pbs.twimg.com/media/EApDldrWsAE6cz4.jpg',
     },
     {
       name: 'Come Together',

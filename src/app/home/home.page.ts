@@ -15,11 +15,12 @@ export class HomePage {
   track: Track;
   player: HTMLAudioElement;
   shuffle: boolean;
-
+  interval:any;
   constructor(private playerService: PlayerService) {
     this.track = this.playerService.random();
-    console.log("Track", this.track);
     this.createPlayer();
+
+    
   }
 
   ngOnDestroy() {
@@ -36,6 +37,7 @@ export class HomePage {
         this.track = this.playerService.prev();
       }
     }
+
     this.reload();
   }
 
@@ -54,8 +56,12 @@ export class HomePage {
   playPause() {
     if (this.player.paused) {
       this.player.play();
+     this.interval = setInterval(()=>{
+        this.getProgress();
+      },1000)
     } else {
       this.player.pause();
+      clearInterval(this.interval);
     }
   }
 
@@ -75,11 +81,15 @@ export class HomePage {
     return this.player.volume * 100;
   }
 
+  
+
   setProgress(duration: number) {
     this.player.currentTime = this.player.duration * duration / 100;
+    console.log(this.player.currentTime);
   }
 
   getProgress(): number {
+    console.log(this.player.currentTime);
     return this.player.currentTime / this.player.duration * 100 || 0;
   }
 
@@ -99,4 +109,3 @@ export class HomePage {
     this.player.load();
   }
 }
-
